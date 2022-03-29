@@ -1,4 +1,4 @@
-def typeOfService(data):
+def type_of_service(data):
     precedence = data >> 5
     delay = data & 0x10
     throughput = data & 0x08
@@ -10,5 +10,9 @@ def typeOfService(data):
     print(f"    Reliability: {reliability}")
     print(f"    Cost: {cost:>8}")
 
-# >> VALORIZA (ADICIONA ZEROS)
-# << DEPRECIA (REDUZ ZEROS)
+
+"""
+BITWISEOPERATORS:
+- '<<' VALORIZA (ADICIONA ZEROS -> x*[2**y])
+- '>>' DEPRECIA (REDUZ ZEROS -> x//[2**y])
+"""
