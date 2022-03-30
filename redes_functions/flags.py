@@ -2,9 +2,9 @@ def flags(data):
     primeiro_bit, segundo_bit, terceiro_bit = calcular_bits(data)
 
     print(f"Flags: {data:>14}")
-    print(f"    Reserved bit: {primeiro_bit:>3}")
-    print(f"    Don't Fragment: {segundo_bit}")
-    print(f"    More Fragments: {terceiro_bit}")
+    print(f"    Reserved bit: {primeiro_bit:>3}")   # SEMPRE ZERO
+    print(f"    Don't Fragment: {segundo_bit}")  # 1: DON'T FRAGMENTA (INFO DIVIDIDA EM HEADERS COM MESMO ID)
+    print(f"    More Fragments: {terceiro_bit}")    # INDICATIVO DE QUE VEM MAIS PACOTES
 
 
 def calcular_bits(data):
