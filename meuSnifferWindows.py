@@ -35,7 +35,7 @@ print(f"Version: {buffer[0] >> 4}")  # CAPTURA OS 4 PRIMEIROS BITS DO 1° BYTE
 ip_header_len = buffer[0] & 0x0f  # CAPTURA OS 4 LAST BITS DO 1° BYTE
 print(f"Header Length: {ip_header_len}")
 print(f"    Existe(m): {ip_header_len - 5} options")
-print(f"Type of Service: {buffer[1]}")  # DSCP? PESQUISAR MAIS
+print(f"Type of Service: {buffer[1]}")  # DSCP? PESQUISAR MAIS (AJUSTAR ERRO NA COLETA DOS BITS)
 type_of_service(buffer[1])
 total_length(buffer[2:4], ip_header_len)
 print(f"ID: {struct.unpack('! H', buffer[4:6])[0]}")  # IDENTIFICA OS FRAGMENTOS DO DATAGRAMA IP
