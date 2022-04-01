@@ -16,7 +16,7 @@ soquete = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
 soquete.bind((local_ip, 0))
 
 # DEFINE AS OPTIONS (CRIA UM HEADER?)
-# soquete.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
+soquete.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
 
 # DEFINE O MODO PROMISCUOUS
 soquete.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)
@@ -44,9 +44,8 @@ print(f"Fragment Offset: {struct.unpack('! H', buffer[6:8])[0] & 0x1FFF}")  # AN
 print(f"Time to Live: {buffer[8]}")  # ANALISAR MAIS (VALORES INTERNOS?)
 print(f"Protocol: {buffer[9]}")  # ANALISAR MAIS (VALORES INTERNOS?)
 print(f"Header Checksum: {struct.unpack('! H', buffer[10:12])[0]}")  # ANALISAR MAIS (VALORES INTERNOS?)
-# POSSIBILIDADE: MOSTRAR DE ONDE VEM O ADDRESS CAPTURADO (https://nordvpn.com/pt-br/ip-lookup/)
-address(buffer[12:16], 0)   # CONFIRMAR SUSPEITA: SOURCE IGUAL AO DO PC -> ENVIO DE PACOTE
-address(buffer[16:20], 1)   # CONFIRMAR SUSPEITA: DESTINATION IGUAL AO DO PC -> RECEBIMENTO DE PACOTE
+address(buffer[12:16], 0, local_ip)   # SOURCE IGUAL AO DO PC -> ENVIO DE PACOTE
+address(buffer[16:20], 1, local_ip)   # DESTINATION IGUAL AO DO PC -> RECEBIMENTO DE PACOTE
 print("*" * 50)
 
 # DESATIVA O MODO PROMISCUOUS
