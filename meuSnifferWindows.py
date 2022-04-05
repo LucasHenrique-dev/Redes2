@@ -5,6 +5,7 @@ from redes_functions.typeOfService import type_of_service
 from redes_functions.totalLength import total_length
 from redes_functions.flags import flags
 from redes_functions.address import address
+from redes_functions.protocol import protocol
 
 # PORTA IPV4 DA INTERNET (REDE SEM FIO)
 local_ip = socket.gethostbyname(socket.gethostname())
@@ -35,17 +36,17 @@ print(f"Version: {buffer[0] >> 4}")  # CAPTURA OS 4 PRIMEIROS BITS DO 1° BYTE
 ip_header_len = buffer[0] & 0x0f  # CAPTURA OS 4 LAST BITS DO 1° BYTE
 print(f"Header Length: {ip_header_len}")
 print(f"    Existe(m): {ip_header_len - 5} options")
-print(f"Type of Service: {buffer[1]}")  # DSCP? PESQUISAR MAIS (AJUSTAR ERRO NA COLETA DOS BITS)
-type_of_service(buffer[1])
+print(f"DS Field (Differentiated Services) - TOS Byte:")
+type_of_service(buffer[1])  # TOS == DSCP + ECN
 total_length(buffer[2:4], ip_header_len)
 print(f"ID: {struct.unpack('! H', buffer[4:6])[0]}")  # IDENTIFICA OS FRAGMENTOS DO DATAGRAMA IP
 flags(buffer[6] >> 5)
 print(f"Fragment Offset: {struct.unpack('! H', buffer[6:8])[0] & 0x1FFF}")  # ANALISAR MAIS (VALORES INTERNOS?)
 print(f"Time to Live: {buffer[8]}")  # ANALISAR MAIS (VALORES INTERNOS?)
-print(f"Protocol: {buffer[9]}")  # ANALISAR MAIS (VALORES INTERNOS?)
+protocol(buffer[9])
 print(f"Header Checksum: {struct.unpack('! H', buffer[10:12])[0]}")  # ANALISAR MAIS (VALORES INTERNOS?)
-address(buffer[12:16], 0, local_ip)   # SOURCE IGUAL AO DO PC -> ENVIO DE PACOTE
-address(buffer[16:20], 1, local_ip)   # DESTINATION IGUAL AO DO PC -> RECEBIMENTO DE PACOTE
+address(buffer[12:16], 0, local_ip)  # SOURCE IGUAL AO DO PC -> ENVIO DE PACOTE
+address(buffer[16:20], 1, local_ip)  # DESTINATION IGUAL AO DO PC -> RECEBIMENTO DE PACOTE
 print("*" * 50)
 # DESATIVA O MODO PROMISCUOUS
 soquete.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)
