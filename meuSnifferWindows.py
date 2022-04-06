@@ -16,7 +16,7 @@ soquete = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
 # MONITORA OS DADOS DA INTERFACE ESCOLHIDA
 soquete.bind((local_ip, 0))
 
-# DEFINE AS OPTIONS (CRIA UM HEADER?)
+# DEFINE AS OPTIONS
 soquete.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
 
 # DEFINE O MODO PROMISCUOUS
@@ -42,7 +42,7 @@ total_length(buffer[2:4], ip_header_len)
 print(f"ID: {struct.unpack('! H', buffer[4:6])[0]}")  # IDENTIFICA OS FRAGMENTOS DO DATAGRAMA IP
 flags(buffer[6] >> 5)
 print(f"Fragment Offset: {struct.unpack('! H', buffer[6:8])[0] & 0x1FFF}")  # ANALISAR MAIS (VALORES INTERNOS?)
-print(f"Time to Live: {buffer[8]}")  # ANALISAR MAIS (VALORES INTERNOS?)
+print(f"Time to Live: {buffer[8]}")  # TEMPO EM QUE O PACOTE DEVE EXISTIR NO COMPUTADOR OU REDE ANTES DO DESCARTE
 protocol(buffer[9])
 print(f"Header Checksum: {struct.unpack('! H', buffer[10:12])[0]}")  # ANALISAR MAIS (VALORES INTERNOS?)
 address(buffer[12:16], 0, local_ip)  # SOURCE IGUAL AO DO PC -> ENVIO DE PACOTE
