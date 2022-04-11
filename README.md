@@ -3,15 +3,15 @@
 
 ## 🎯 Proposta
 
-Repositório contendo os projetos desenvolvidos durante a cadeira de Redes 2, período 2021.2.
-Seguindo uma abordagem mais prática, o curso possui ênfase no desenvolvido de aplicações em redes de computadores.
+Repositório contendo os projetos desenvolvidos durante a cadeira de Redes 2, período 2021.2. </br>
+Seguindo uma abordagem mais prática, o curso possui ênfase no desenvolvido de aplicações em redes de computadores. </br>
 Como forma de avaliação, 2 projetos foram propostos.
 
 ## 🚀 Projetos
 
 Projeto | Descrição | Sistema Operacional | Status
 |---|---|--- |---
-[Sniffer](desafios/logicaJavaScript) | Criação de um Sniffer para monitoramento do cabeçalho IPv4 | Windows | Concluído
+[Sniffer](#) | Criação de um Sniffer para monitoramento do cabeçalho IPv4 | Windows | Concluído
 
 ## 📝 Licença
 
