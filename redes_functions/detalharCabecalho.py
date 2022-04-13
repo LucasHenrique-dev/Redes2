@@ -19,7 +19,7 @@ def show_header(buffer, local_ip):
     total_length(buffer[2:4], ip_header_len)
     print(f"ID: {struct.unpack('! H', buffer[4:6])[0]}")  # IDENTIFICA OS FRAGMENTOS DO DATAGRAMA IP
     flags(buffer[6] >> 5)
-    print(f"Fragment Offset: {struct.unpack('! H', buffer[6:8])[0] & 0x1FFF}")  # ANALISAR MAIS (VALORES INTERNOS?)
+    print(f"Fragment Offset: {struct.unpack('! H', buffer[6:8])[0] & 0x1FFF}")
     print(f"Time to Live: {buffer[8]}")  # TEMPO EM QUE O PACOTE DEVE EXISTIR NO COMPUTADOR OU REDE ANTES DO DESCARTE
     protocol(buffer[9])
     print(f"Header Checksum: {struct.unpack('! H', buffer[10:12])[0]}")  # VERIFICA A INTEGRIDADE DOS DADOS DO IP HEADER
