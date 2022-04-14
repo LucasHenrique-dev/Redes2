@@ -5,5 +5,5 @@ def protocol(data):
         print("TCP")
     elif data == 17:
         print("UDP")
-    elif data == 1 or data == 2:
+    elif data == 1:
         print("ICMP")
