@@ -27,7 +27,7 @@ while ttl <= 60:
 
     print(f"\nTTL: {ttl}")
 
-    [tentativas, addr] = alcancar_rastreador(socket_recv, socket_sender, port, ttl, alvo)
+    tentativas, addr = alcancar_rastreador(socket_recv, socket_sender, port, ttl, alvo)
 
     print(tentativas)
 
