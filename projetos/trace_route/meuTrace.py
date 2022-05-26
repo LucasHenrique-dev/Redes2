@@ -8,7 +8,6 @@ ttl = 1
 port = 33434
 rejeicoes = 0
 enderecos = []
-# alvo = '200.133.2.18'
 
 site, alvo = procurar_site()
 
