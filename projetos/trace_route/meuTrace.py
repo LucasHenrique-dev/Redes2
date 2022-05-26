@@ -1,38 +1,55 @@
-import socket
+from trace_functions.procurarSite import procurar_site
+from trace_functions.criarSoqueteReceber import criar_soquete_receber
+from trace_functions.criarSoqueteEnviar import criar_soquete_enviar
+from trace_functions.alcancarRoteador import alcancar_rastreador
+from trace_functions.exibir_rota import exibir_rota
 
 ttl = 1
 port = 33434
-alvo = '8.8.8.8'
+rejeicoes = 0
+enderecos = []
+# alvo = '200.133.2.18'
 
-while True:
-    # SOQUETE DE RECEBIMENTO DE PACOTE (RECEBE PACOTES ICMP)
-    socket_recv = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP)
-    socket_recv.settimeout(2)  # ATIVA UM ERRO DEPOIS DE 2 SEGUNDOS DE ESPERA PELA RESPOSTA
-    socket_recv.bind(('', port))
+site, alvo = procurar_site()
 
-    # SOQUETE DE ENVIO DE PACOTE (ENVIA PACOTES UDP)
-    socket_sender = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    # DEFINE AS OPTIONS DO HEADER (NESSE CASO TRABALHA COM PROTOCOLO IP E ALTERA O CAMPO TTL)
-    socket_sender.setsockopt(socket.SOL_IP, socket.IP_TTL, ttl)
+print(f"Alvo: {site} ({alvo})")
+
+print("-=" * 50, end='-\n')
+while ttl <= 60:
+    # CRIA SOQUETE DE RECEBIMENTO DE PACOTES (ICMP)
+    socket_recv = criar_soquete_receber(port)
+
+    # CRIA SOQUETE DE ENVIO DE PACOTES (UDP)
+    socket_sender = criar_soquete_enviar(ttl)
 
     # ENVIA UMA MENSAGEM (EM BYTES) PARA O "ALVO" NA PORTA "PORT"
     socket_sender.sendto(b'Hello World!', (alvo, port))
 
-    print(f"TTL: {ttl}")
+    print(f"\nTTL: {ttl}")
 
-    try:
-        addr, info = socket_recv.recvfrom(2000)
-        print(f"ADDR: {addr}, info: {info}")
-    except socket.error:
-        socket_recv.close()
-        socket_sender.close()
-        print("TIME OUT!")
+    [tentativas, addr] = alcancar_rastreador(socket_recv, socket_sender, port, ttl, alvo)
 
-    if ttl > 10:
-        break
+    print(tentativas)
+
+    if addr == "*":
+        rejeicoes += 1
     else:
-        ttl += 1
+        rejeicoes = 0
 
-socket_recv.close()
-socket_sender.close()
-print("Fim")
+    enderecos.append(addr)
+
+    if rejeicoes >= 15:
+        break
+
+    if addr == alvo:
+        break
+
+    ttl += 1
+print("-=" * 50, end='-\n\n')
+
+try:
+    exibir_rota(enderecos)
+except Exception as erro:
+    print(f"Houve um erro ao tentar rastrear a rota: {erro}")
+
+print("\nFim do Rastreamento")
