@@ -12,6 +12,7 @@ Como forma de avaliação, 2 projetos foram propostos.
 Projeto | Descrição | Sistema Operacional | Status
 |---|---|--- |---
 [Sniffer](projetos/sniffer) | Criação de um Sniffer para monitoramento do cabeçalho IPv4 | Windows | Concluído
+[TraceRoute](projetos/trace_route) | Criação de um Trace Route para monitoramento do tráfego de pacotes | Windows/Linux | Concluído
 
 ## 📝 Licença
 
