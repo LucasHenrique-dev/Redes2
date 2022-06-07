@@ -6,9 +6,15 @@
 
 O objetivo da aplicação é criar um programa Trace Route o qual rastreia a rota do pacote na rede até o ponto de interesse.
 
-<img src="../../images/trace_route/trace_img1.svg" alt="foto 1 do programa trace route">
-<img src="../../images/trace_route/trace_img1.svg" alt="foto 2 do programa trace route">
-<img src="../../images/trace_route/trace_img1.svg" alt="foto 3 do programa trace route">
+<p align="center">
+   <img src="../../images/trace_route/trace_img1.png" alt="foto 1 do programa trace route">
+</p>
+<p align="center">
+   <img src="../../images/trace_route/trace_img2.png" alt="foto 2 do programa trace route">
+</p>
+<p align="center">
+   <img src="../../images/trace_route/trace_img3.png" alt="foto 3 do programa trace route">
+</p>
 
 > O programa exibe rota traçada pelo pacote até o seu destino.
 
