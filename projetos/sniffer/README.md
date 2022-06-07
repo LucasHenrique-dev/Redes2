@@ -6,8 +6,9 @@
 
 O objetivo da aplicação é criar um programa Sniffer o qual realiza um monitoramento dos pacotes na rede e exibe detalhadamente os campos do cabeçalho IPv4.
 
-<img src="../../images/sniffer/sniffer_img1.svg" alt="foto 1 do programa sniffer">
-<img src="../../images/sniffer/sniffer_img2.svg" alt="foto 2 do programa sniffer">
+
+<img src="https://github.com/LucasHenrique-dev/Redes2/blob/main/images/sniffer/sniffer_img1.png" alt="foto 1 do programa sniffer">
+<img src="../../images/sniffer/sniffer_img2.png" alt="foto 2 do programa sniffer">
 
 > O programa exibe até o campo "Endereço de Destino" (Destination Address) do cabeçalho IPv4.
 
@@ -21,9 +22,9 @@ O objetivo da aplicação é criar um programa Sniffer o qual realiza um monitor
 
 ## ☕ Usando o Sniffer
 
-Execute o arquivo **meuSnifferWindows.py** usando privilégios de administrador: [Sniffer](meuSnifferWindows.py)
-    *Para que funcione você irá precisar da pasta **sniffer_functions**
-    Considere clonar o projeto para facilitar seu uso
-    Clone: `git clone https://github.com/LucasHenrique-dev/Redes2.git`
+Execute o arquivo **meuSnifferWindows.py** usando privilégios de administrador: [Sniffer](meuSnifferWindows.py)</br>
+-  OBS: Para que funcione você irá precisar da pasta **sniffer_functions** </br>
+   Considere clonar o projeto para facilitar seu uso </br>
+   Clone: `git clone https://github.com/LucasHenrique-dev/Redes2.git`
 
 [⬆ Voltar ao topo](#-sniffer)
