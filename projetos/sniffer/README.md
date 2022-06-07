@@ -6,9 +6,12 @@
 
 O objetivo da aplicação é criar um programa Sniffer o qual realiza um monitoramento dos pacotes na rede e exibe detalhadamente os campos do cabeçalho IPv4.
 
-
-<img src="https://github.com/LucasHenrique-dev/Redes2/blob/main/images/sniffer/sniffer_img1.png" alt="foto 1 do programa sniffer">
-<img src="../../images/sniffer/sniffer_img2.png" alt="foto 2 do programa sniffer">
+<p align="center">
+   <img src="https://github.com/LucasHenrique-dev/Redes2/blob/main/images/sniffer/sniffer_img1.png" alt="foto 1 do programa sniffer">
+</p>
+<p align="center">
+   <img src="../../images/sniffer/sniffer_img2.png" align="center" alt="foto 2 do programa sniffer">
+</p>
 
 > O programa exibe até o campo "Endereço de Destino" (Destination Address) do cabeçalho IPv4.
 
